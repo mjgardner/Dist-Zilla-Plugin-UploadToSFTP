@@ -68,6 +68,8 @@ my $builder = $class->new(
 		'Module::Build'                       => '0.33',
 		'Moose'                               => '1.09',
 		'autodie'                             => '2.70',
+		'Pod::Readme'                         => '0.10',
+		'Software::License'                   => '0.101620',
 		# These are what the author tests require.
 		# Might as well have the prospective builder install
 		#  them now.
