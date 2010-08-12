@@ -7,20 +7,31 @@ with 'Dist::Zilla::Role::PluginBundle::Easy';
 our $VERSION = '0.900';
 $VERSION =~ s/_//sm;
 
+has fake_release => (
+	is      => 'ro',
+	isa     => 'Bool',
+	lazy    => 1,
+	default => sub { 
+		exists $_[0]->payload->{fake_release} : $_[0]->payload->{fake_release} : 1;
+	},
+);
 
 sub configure {
 	my ($self) = @_;
 
-	$self->add_plugins( qw(
-		  CSJEWELL::BeforeBuild
-		  GatherDir
-		  ManifestSkip
-		  CSJEWELL::VersionGetter
+	my @plugins = qw(
+		CSJEWELL::BeforeBuild
+		GatherDir
+		ManifestSkip
+		CSJEWELL::VersionGetter
 
-		  TestRelease
-		  ConfirmRelease
-		  UploadToCPAN
-	) );
+		TestRelease
+		ConfirmRelease
+	);
+
+	push @plugins, ( $self->fake_release() ? 'FakeRelease' : 'UploadToCPAN');
+
+	$self->add_plugins( @plugins );
 
 	return $self;
 } ## end sub configure
@@ -77,9 +88,16 @@ L<Dist::Zilla::Plugin::ConfirmRelease|Dist::Zilla::Plugin::ConfirmRelease>
 
 =item *
 
-L<Dist::Zilla::Plugin::UploadToCPAN|Dist::Zilla::Plugin::UploadToCPAN>
+L<Dist::Zilla::Plugin::UploadToCPAN|Dist::Zilla::Plugin::UploadToCPAN> *
+
+=item *
+
+L<Dist::Zilla::Plugin::FakeRelease|Dist::Zilla::Plugin::FakeRelease> *
 
 =back
+
+* Note that the choice of which the last two is given by a "fake_release" 
+option to the plugin bundle, which must exist and be 0 to use UploadToCPAN.
 
 =for Pod::Coverage configure
 
