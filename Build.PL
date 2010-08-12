@@ -67,6 +67,7 @@ my $builder = $class->new(
         'Dist::Zilla::Plugin::Twitter'        => '0.009',
 		'Module::Build'                       => '0.33',
 		'Moose'                               => '1.09',
+		'autodie'                             => '2.70',
 		# These are what the author tests require.
 		# Might as well have the prospective builder install
 		#  them now.

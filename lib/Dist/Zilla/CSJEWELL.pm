@@ -71,7 +71,7 @@ it, including a dist.ini that does the release steps that CSJEWELL requires.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
-The configuration questions are asked for 
+The configuration questions are asked for in the C<dzil configure_CSJEWELL> command.
 
 =for readme continue
 
