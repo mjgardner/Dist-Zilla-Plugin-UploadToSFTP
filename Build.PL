@@ -50,10 +50,10 @@ END_CODE
 
 
 my $builder = $class->new(
-    module_name              => 'Dist::Zilla::CSJEWELL',
+    module_name              => 'Dist::Zilla::BeLike::CSJEWELL',
     license                  => 'perl',
     dist_author              => [ 'Curtis Jewell <CSJewell@cpan.org>' ],
-    dist_version_from        => 'lib/Dist/Zilla/CSJEWELL.pm',
+    dist_version_from        => 'lib/Dist/Zilla/BeLike/CSJEWELL.pm',
 	create_readme            => 1,
 	create_license           => 1,
 	create_makefile_pl       => 'small',
@@ -105,7 +105,7 @@ my $builder = $class->new(
     meta_merge     => {
         resources => {
             homepage    => 'http://csjewell.comyr.com/perl/',
-            bugtracker  => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dist-Zilla-CSJEWELL',
+            bugtracker  => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dist-Zilla-BeLike-CSJEWELL',
             repository  => 'http://bitbucket.org/csjewell/dist-zilla-csjewell'
         },
     },
@@ -114,7 +114,7 @@ my $builder = $class->new(
 			'Dist::Zilla::MintingProfile::CSJEWELL'  => 'share',
 		}
 	},
-    add_to_cleanup      => [ 'Dist-Zilla-CSJEWELL-*', ],
+    add_to_cleanup      => [ 'Dist-Zilla-BeLike-CSJEWELL-*', ],
 );
 
 $builder->create_build_script();

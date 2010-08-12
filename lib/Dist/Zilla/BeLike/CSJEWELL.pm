@@ -1,4 +1,4 @@
-package Dist::Zilla::CSJEWELL;
+package Dist::Zilla::BeLike::CSJEWELL;
 
 use 5.008003;
 use warnings;
@@ -17,7 +17,7 @@ __END__
 
 =begin readme text
 
-Dist::Zilla::CSJEWELL version 0.900
+Dist::Zilla::BeLike::CSJEWELL version 0.900
 
 =end readme
 
@@ -25,11 +25,11 @@ Dist::Zilla::CSJEWELL version 0.900
 
 =head1 NAME
 
-Dist::Zilla::CSJEWELL - Build a modern dist like CSJEWELL does it.
+Dist::Zilla::BeLike::CSJEWELL - Build a modern dist like CSJEWELL does it.
 
 =head1 VERSION
 
-This document describes Dist::Zilla::CSJEWELL version 0.900.
+This document describes Dist::Zilla::BeLike::CSJEWELL version 0.900.
 
 =begin readme
 
@@ -96,10 +96,10 @@ No bugs have been reported.
 
 Bugs should be reported via: 
 
-1) The CPAN bug tracker at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dist-Zilla-CSJEWELL>
+1) The CPAN bug tracker at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dist-Zilla-BeLike-CSJEWELL>
 if you have an account there.
 
-2) Email to E<lt>bug-Dist-Zilla-CSJEWELL@rt.cpan.orgE<gt> if you do not.
+2) Email to E<lt>bug-Dist-Zilla-BeLike-CSJEWELL@rt.cpan.orgE<gt> if you do not.
 
 =head1 AUTHOR
 
