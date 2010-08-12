@@ -54,9 +54,13 @@ This document describes Dist::Zilla::PluginBundle::CSJEWELL version 0.900.
 
 =head1 DESCRIPTION
 
-This plugin is meant to be a basic "first step" bundle for using Dist::Zilla.
-It won't munge any of your code, but will generate a F<Makefile.PL> and allows
-easy, reliable releasing of distributions.
+This is meant to be a usable plugin bundle for those of us that want to check 
+in everything, and have what is checked in be released, other than what can 
+be generated from what IS checked in at 'Build dist' or 'dzil build' time, 
+and that both of those generate an identical tarball.
+
+The goal is that no plugin that creates or modifies a .pm, .pod, or .t file 
+'on the fly' is in here.
 
 It includes the following plugins with their default configuration:
 
