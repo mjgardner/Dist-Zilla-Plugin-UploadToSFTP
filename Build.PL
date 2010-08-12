@@ -106,7 +106,7 @@ my $builder = $class->new(
         resources => {
             homepage    => 'http://csjewell.comyr.com/perl/',
             bugtracker  => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dist-Zilla-BeLike-CSJEWELL',
-            repository  => 'http://bitbucket.org/csjewell/dist-zilla-csjewell'
+            repository  => 'http://bitbucket.org/csjewell/dist-zilla-belike-csjewell'
         },
     },
 	share_dir => {
