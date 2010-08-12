@@ -35,3 +35,5 @@ private_name_regex = _(?!build_)\w+
 # No Emacs!
 [-Editor::RequireEmacsFileVariables]
 
+# We have the command that needs to start with lowercase.
+[-NamingConventions::Capitalization]

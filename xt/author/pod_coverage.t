@@ -4,6 +4,13 @@
 
 use strict;
 
+sub filter {
+	my $module = shift;
+	
+	return 0 if $module =~ m/auto::share/;
+	return 1;
+}
+
 BEGIN {
 	use English qw(-no_match_vars);
 	$OUTPUT_AUTOFLUSH = 1;
@@ -27,7 +34,7 @@ foreach my $MODULE ( @MODULES ) {
 }
 
 my @modules = all_modules();
-my @modules_to_test = sort { $a cmp $b } @modules;
+my @modules_to_test = sort { $a cmp $b } grep { filter($_) } @modules;
 my $test_count = scalar @modules_to_test;
 plan tests => $test_count;
 
