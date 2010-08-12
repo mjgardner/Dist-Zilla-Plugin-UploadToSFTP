@@ -106,6 +106,11 @@ my $builder = $class->new(
             repository  => 'http://bitbucket.org/csjewell/dist-zilla-csjewell'
         },
     },
+	share_dir => {
+		module => {
+			'Dist::Zilla::MintingProfile::CSJEWELL'  => 'share',
+		}
+	},
     add_to_cleanup      => [ 'Dist-Zilla-CSJEWELL-*', ],
 );
 

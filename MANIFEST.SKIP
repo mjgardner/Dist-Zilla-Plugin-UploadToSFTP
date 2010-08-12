@@ -8,7 +8,7 @@
 \B\.git\b
 \B\.gitignore\b
 \B\.hg\b
-\B\.hgignore\b
+^\.hgignore$  # We want the one in our sharedir.
 \B\.hgtags\b
 \b_darcs\b
 

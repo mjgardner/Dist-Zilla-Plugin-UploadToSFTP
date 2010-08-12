@@ -61,11 +61,8 @@ Alternatively, to install with Module::Build, you can use the following commands
 	# After 'dzil setup'
 	dzil configure_CSJEWELL
 	
-	# To create a module if you requested this be the default.
-	dzil new Your::Module
-	
-	# To create a module if you requested this not be the default.
-	dzil new -p csjewell Your::Module
+	# To create a module
+	dzil new -P CSJEWELL Your::Module
 
 =head1 DESCRIPTION
 
