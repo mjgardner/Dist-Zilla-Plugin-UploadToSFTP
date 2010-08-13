@@ -36,6 +36,7 @@ has debug => (
 sub release {
 	my ( $self, $archive ) = @_;
 
+	my $filename = $archive->stringify();
 	my $site     = $self->site();
 	my $siteinfo = Net::Netrc->lookup($site);
 	if ( not $siteinfo ) {
@@ -59,15 +60,15 @@ sub release {
 	  or $self->log_fatal(
 		'Could not change remote site directory to' . $self->directory() );
 
-	my $remote_file = $ftp->put($archive);
+	my $remote_file = $ftp->put($filename);
 
-	if ( $remote_file ne $archive ) {
+	if ( $remote_file ne $filename ) {
 		$self->log_fatal( 'Could not upload file: ' . $ftp->message() );
 	}
 
 	my $remote_size = $ftp->size($remote_file);
 	$remote_size ||= 0;
-	my $local_size = -s $archive;
+	my $local_size = -s $filename;
 
 	if ( $remote_size != $local_size ) {
 		$self->log( "Uploaded file is $remote_size bytes, "

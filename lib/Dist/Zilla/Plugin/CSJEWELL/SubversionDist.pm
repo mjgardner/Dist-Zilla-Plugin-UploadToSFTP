@@ -28,18 +28,15 @@ has debug => (
 sub release {
 	my ( $self, $archive ) = @_;
 
-	my $zilla = $self->zilla();
-
-	$self->log($archive);
-
-	my $remote_file = $self->directory() . $archive;
+	my $filename    = $archive->stringify();
+	my $remote_file = $self->directory() . $filename;
 	my $bot_name    = $self->name();
 	my ( $release, $version ) =
-	  $archive =~ m/([\w-]+)-([\d_.]+)(?:-TRIAL)?.tar.gz/msx;
-	$release   =~ s/-/::/gms;
+	  $filename =~ m/([\w-]+)-([\d_.]+)(?:-TRIAL)?.tar.gz/msx;
+	$release    =~ s/-/::/gms;
 	my $message = "[$bot_name] Importing upload file for $release $version";
 
-	my $command = qq(svn import $archive $remote_file -m "$message" 2>&1);
+	my $command = qq(svn import $filename $remote_file -m "$message" 2>&1);
 	if ( $self->fake_release() ) {
 		$self->log($command);
 	} else {
