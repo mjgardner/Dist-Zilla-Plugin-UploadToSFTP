@@ -37,7 +37,7 @@ sub release {
 	my $message = "[$bot_name] Importing upload file for $release $version";
 
 	my $command = qq(svn import $filename $remote_file -m "$message" 2>&1);
-	if ( $self->fake_release() ) {
+	if ( $self->debug() ) {
 		$self->log($command);
 	} else {
 		my $i = system $command;
