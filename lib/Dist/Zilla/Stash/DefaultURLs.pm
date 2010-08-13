@@ -38,7 +38,7 @@ This document describes Dist::Zilla::Stash::DefaultURLs version 0.900.
 
 The DefaultURLs stash is a L<stash|Dist::Zilla::Role::Stash> used to
 store default URLs used by the skeleton files that 
-L<Dist::Zilla::CSJEWELL|Dist::Zilla::CSJEWELL> provides.
+L<Dist::Zilla::BeLike::CSJEWELL|Dist::Zilla::BeLike::CSJEWELL> provides.
 
 =head1 AUTHOR
 
@@ -46,7 +46,7 @@ Curtis Jewell <CSJewell@cpan.org>
 
 =head1 SEE ALSO
 
-L<Dist::Zilla::CSJEWELL|Dist::Zilla::CSJEWELL>
+L<Dist::Zilla::BeLike::CSJEWELL|Dist::Zilla::BeLike::CSJEWELL>
 
 =head1 LICENSE AND COPYRIGHT
 

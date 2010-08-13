@@ -49,7 +49,7 @@ Curtis Jewell <CSJewell@cpan.org>
 
 =head1 SEE ALSO
 
-L<Dist::Zilla::CSJEWELL|Dist::Zilla::CSJEWELL>
+L<Dist::Zilla::BeLike::CSJEWELL|Dist::Zilla::BeLike::CSJEWELL>
 
 =head1 LICENSE AND COPYRIGHT
 
