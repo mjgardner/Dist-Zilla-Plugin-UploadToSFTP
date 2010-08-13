@@ -12,7 +12,9 @@ $VERSION =~ s/_//sm;
 sub before_build {
 	my ($self) = @_;
 
-# This has the same effect as "perl Build.PL && Build manifest && Build distmeta", only in code.
+	# This has the same effect as 
+	#   "perl Build.PL && Build manifest && Build distmeta", 
+	# only in code.
 	my $builder = Module::Build->new_from_context();
 	$builder->ACTION_manifest();
 	$builder->ACTION_distmeta();
