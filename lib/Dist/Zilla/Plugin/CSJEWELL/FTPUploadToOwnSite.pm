@@ -107,7 +107,7 @@ This document describes Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite versio
 	debug       = 0
 	
 	# in $HOME/.netrc
-	ftp.geocities.invalid csjewell password
+	machine ftp.geocities.invalid login csjewell password drowssap
 
 =head1 INTERFACE
 
