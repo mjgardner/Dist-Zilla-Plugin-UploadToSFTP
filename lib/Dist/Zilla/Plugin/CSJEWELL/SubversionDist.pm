@@ -8,48 +8,48 @@ our $VERSION = '0.900';
 $VERSION =~ s/_//sm;
 
 has directory => (
-  is   => 'ro',
-  isa  => 'Str',
-  required => 1,
+	is       => 'ro',
+	isa      => 'Str',
+	required => 1,
 );
 
 has name => (
-  is   => 'ro',
-  isa  => 'Str',
-  default => 'DZ::Plugin::CSJEWELL::SubversionDist',
+	is      => 'ro',
+	isa     => 'Str',
+	default => 'DZ::Plugin::CSJEWELL::SubversionDist',
 );
 
 has debug => (
-  is   => 'ro',
-  isa  => 'Bool',
-  default => 0,
+	is      => 'ro',
+	isa     => 'Bool',
+	default => 0,
 );
 
 sub release {
-	my ($self, $archive) = @_;
+	my ( $self, $archive ) = @_;
 
 	my $zilla = $self->zilla();
-	
+
 	$self->log($archive);
 
 	my $remote_file = $self->directory() . $archive;
 	my $bot_name    = $self->name();
 	my ( $release, $version ) =
-	  $archive =~ m/([\w-]+)-([\d_\.]+).tar.gz/msx;
-	$release =~ s/-/::/gms;
+	  $archive =~ m/([\w-]+)-([\d_.]+)(?:-TRIAL)?.tar.gz/msx;
+	$release   =~ s/-/::/gms;
 	my $message = "[$bot_name] Importing upload file for $release $version";
 
-	my $command = qq(svn import $archive $remote_file -m "$message" 2>&1); 
-	if ($self->fake_release()) {
+	my $command = qq(svn import $archive $remote_file -m "$message" 2>&1);
+	if ( $self->fake_release() ) {
 		$self->log($command);
 	} else {
-		system $command;
+		my $i = system $command;
 	}
 
 	$self->log('Release file committed to SVN.');
-	
+
 	return 1;
-}
+} ## end sub release
 
 __PACKAGE__->meta()->make_immutable();
 no Moose;

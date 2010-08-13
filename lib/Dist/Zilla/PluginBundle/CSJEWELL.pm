@@ -11,8 +11,10 @@ has fake_release => (
 	is      => 'ro',
 	isa     => 'Bool',
 	lazy    => 1,
-	default => sub { 
-		exists $_[0]->payload->{fake_release} : $_[0]->payload->{fake_release} : 1;
+	default => sub {
+		exists $_[0]->payload->{fake_release}
+		  ? $_[0]->payload->{fake_release}
+		  : 1;
 	},
 );
 
@@ -20,18 +22,20 @@ sub configure {
 	my ($self) = @_;
 
 	my @plugins = qw(
-		CSJEWELL::BeforeBuild
-		GatherDir
-		ManifestSkip
-		CSJEWELL::VersionGetter
+	  CSJEWELL::BeforeBuild
+	  GatherDir
+	  ManifestSkip
+	  CSJEWELL::VersionGetter
+	  CSJEWELL::AuthorTest
 
-		TestRelease
-		ConfirmRelease
+	  TestRelease
+	  ConfirmRelease
 	);
 
-	push @plugins, ( $self->fake_release() ? 'FakeRelease' : 'UploadToCPAN');
+	push @plugins,
+	  ( $self->fake_release() ? 'FakeRelease' : 'UploadToCPAN' );
 
-	$self->add_plugins( @plugins );
+	$self->add_plugins(@plugins);
 
 	return $self;
 } ## end sub configure

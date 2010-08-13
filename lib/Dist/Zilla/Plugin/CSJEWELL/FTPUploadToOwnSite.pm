@@ -10,69 +10,72 @@ our $VERSION = '0.900';
 $VERSION =~ s/_//sm;
 
 has site => (
-  is   => 'ro',
-  isa  => 'Str',
-  required => 1,
+	is       => 'ro',
+	isa      => 'Str',
+	required => 1,
 );
 
 has directory => (
-  is   => 'ro',
-  isa  => 'Str',
-  required => 1,
+	is       => 'ro',
+	isa      => 'Str',
+	required => 1,
 );
 
 has passive_ftp => (
-  is   => 'ro',
-  isa  => 'Int',
-  default => 1,
+	is      => 'ro',
+	isa     => 'Int',
+	default => 1,
 );
 
 has debug => (
-  is   => 'ro',
-  isa  => 'Int',
-  default => 0,
+	is      => 'ro',
+	isa     => 'Int',
+	default => 0,
 );
 
 sub release {
-	my ($self, $archive) = @_;
+	my ( $self, $archive ) = @_;
 
-	my $site = $self->site();
-	my $siteinfo = Net::Netrc->lookup($self->site());
-	my ($user, $password, undef) = $siteinfo->lpa();
-	
+	my $site     = $self->site();
+	my $siteinfo = Net::Netrc->lookup( $self->site() );
+	my ( $user, $password, undef ) = $siteinfo->lpa();
+
 	my $ftp = Net::FTP->new(
 		$site,
 		Debug   => $self->debug(),
 		Passive => $self->passive_ftp(),
 	);
-	
-	$ftp->login($user, $password) or $self->log_fatal("Could not log in to " . $site);
-	
+
+	$ftp->login( $user, $password )
+	  or $self->log_fatal( 'Could not log in to ' . $site );
+
 	$ftp->binary;
 
-	$ftp->cwd($self->directory()) or $self->log_fatal("Could not change remote site directory to" . $self->directory());
-	
-	my $remote_file = $ftp->put($archive, $archive);
-	
+	$ftp->cwd( $self->directory() )
+	  or $self->log_fatal(
+		'Could not change remote site directory to' . $self->directory() );
+
+	my $remote_file = $ftp->put( $archive, $archive );
+
 	if ( $remote_file ne $archive ) {
-		$self->log_fatal( "Could not upload file: " . $ftp->message );
+		$self->log_fatal( 'Could not upload file: ' . $ftp->message() );
 	}
-	
-	my $remote_size = $ftp->size( $self->remote_file );
+
+	my $remote_size = $ftp->size($remote_file);
 	$remote_size ||= 0;
 	my $local_size = -s $archive;
-	
-	if ($remote_size != $local_size) {
-		$self->log("Uploaded file is $remote_size bytes, " .
-			"but local file is $local_size bytes")
+
+	if ( $remote_size != $local_size ) {
+		$self->log( "Uploaded file is $remote_size bytes, "
+			  . "but local file is $local_size bytes" );
 	}
 
 	$ftp->quit;
 
-	print "File uploaded to " . $self->site();
+	print 'File uploaded to ' . $self->site();
 
 	return 1;
-}
+} ## end sub release
 
 __PACKAGE__->meta()->make_immutable();
 no Moose;
