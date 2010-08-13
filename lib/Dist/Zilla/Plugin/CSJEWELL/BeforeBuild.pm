@@ -16,7 +16,7 @@ sub before_build {
 	#   "perl Build.PL && Build manifest && Build distmeta", 
 	# only in code.
 	my $builder = Module::Build->new_from_context();
-	$builder->ACTION_manifest();
+	# Our ACTION_distmeta depends on 'manifest', so runs it.
 	$builder->ACTION_distmeta();
 
 	return 1;
