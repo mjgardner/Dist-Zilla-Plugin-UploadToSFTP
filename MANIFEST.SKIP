@@ -51,7 +51,7 @@
 ^dist.ini$
 
 # Avoid archives of this distribution
-\bDist-Zilla-CSJEWELL-[\d\.\_]+
+\bDist-Zilla-BeLike-CSJEWELL-[\d\.\_]+
 
 
 
