@@ -2,6 +2,8 @@ package Dist::Zilla::Plugin::CSJEWELL::DotFileFix;
 
 use 5.008003;
 use Moose;
+use File::Copy qw( move );
+use English qw( -no_match_vars );
 with 'Dist::Zilla::Role::AfterMint';
 
 our $VERSION = '0.900';
@@ -13,12 +15,14 @@ sub after_mint {
 
 	my $root = $hash->{mint_root};
 
-	rename $root->file('_hgignore')->stringify(),
-	  $root->file('.hgignore')->stringify()
-	  or $self->log('Could not rename _hgignore to .hgignore');
+	my $source_file = $root->file('_hgignore')->stringify();
+	my $dest_file   = $root->file('.hgignore')->stringify();
+
+	move( $source_file, $dest_file )
+	  or $self->log("Could not move _hgignore to .hgignore: $OS_ERROR");
 
 	return 1;
-}
+} ## end sub after_mint
 
 __PACKAGE__->meta()->make_immutable();
 no Moose;
