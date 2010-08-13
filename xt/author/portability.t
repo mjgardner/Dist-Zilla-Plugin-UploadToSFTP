@@ -16,8 +16,7 @@ my @MODULES = (
 );
 
 # Load the testing modules
-# use Test::More;
-use Test::More skip_all => 'Installs a known non-portable file.';
+use Test::More;
 foreach my $MODULE ( @MODULES ) {
 	eval "use $MODULE";
 	if ( $EVAL_ERROR ) {
