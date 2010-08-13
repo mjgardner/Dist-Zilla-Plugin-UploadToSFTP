@@ -77,7 +77,7 @@ sub release {
 
 	$ftp->quit;
 
-	print 'File uploaded to ' . $self->site();
+	$self->log( 'File uploaded to ' . $self->site() );
 
 	return 1;
 } ## end sub release
