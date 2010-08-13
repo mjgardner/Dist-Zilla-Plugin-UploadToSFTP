@@ -67,9 +67,12 @@ my $builder = $class->new(
         'Dist::Zilla::Plugin::Twitter'        => '0.009',
 		'Module::Build'                       => '0.33',
 		'Moose'                               => '1.09',
-		'autodie'                             => '2.70',
+		'autodie'                             => '2.10',
 		'Pod::Readme'                         => '0.10',
 		'Software::License'                   => '0.101620',
+		# These next 2 are from libnet 1.22.
+		'Net::Netrc'                          => '2.12',
+		'Net::FTP'                            => '2.77',
 		# These are what the author tests require.
 		# Might as well have the prospective builder install
 		#  them now.
