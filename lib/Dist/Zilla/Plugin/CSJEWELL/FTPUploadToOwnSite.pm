@@ -37,7 +37,10 @@ sub release {
 	my ( $self, $archive ) = @_;
 
 	my $site     = $self->site();
-	my $siteinfo = Net::Netrc->lookup( $self->site() );
+	my $siteinfo = Net::Netrc->lookup( $site );
+	if (not $siteinfo) {
+		$self->log_fatal("Could not get information for $site from .netrc.");
+	}
 	my ( $user, $password, undef ) = $siteinfo->lpa();
 
 	my $ftp = Net::FTP->new(
