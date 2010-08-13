@@ -59,7 +59,7 @@ sub release {
 	  or $self->log_fatal(
 		'Could not change remote site directory to' . $self->directory() );
 
-	my $remote_file = $ftp->put( $archive, $archive );
+	my $remote_file = $ftp->put($archive);
 
 	if ( $remote_file ne $archive ) {
 		$self->log_fatal( 'Could not upload file: ' . $ftp->message() );
