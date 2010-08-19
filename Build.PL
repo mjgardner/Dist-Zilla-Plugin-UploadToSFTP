@@ -107,7 +107,8 @@ my $builder = $class->new(
 		'Test::Portability::Files'            => '0.05',
     },
 	build_requires => {
-        'Test::More'                          => '0.88',
+		'Test::More'                          => '0.88',
+		'Test::UseAllModules'                 => '0.12',
 	},
     meta_merge     => {
         resources => {
