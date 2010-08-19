@@ -7,68 +7,68 @@ my $class = Module::Build->subclass(
 	code  => <<'END_CODE',
 
 sub ACTION_authortest {
-    my ($self) = @_;
+	my ($self) = @_;
 
-    $self->depends_on('build');
+	$self->depends_on('build');
 
-    $self->test_files( qw( t xt/author ) );
-    $self->depends_on('test');
+	$self->test_files( qw( t xt/author ) );
+	$self->depends_on('test');
 
-    return;
+	return;
 }
 
 
 
 sub ACTION_releasetest {
-    my ($self) = @_;
+	my ($self) = @_;
 
-    $self->depends_on('build');
+	$self->depends_on('build');
 
-    $self->test_files( qw( t xt/author xt/release ) );
-    $self->depends_on('test');
+	$self->test_files( qw( t xt/author xt/release ) );
+	$self->depends_on('test');
 
-    return;
+	return;
 }
 
 
 
 sub ACTION_manifest {
-    my ($self, @arguments) = @_;
+	my ($self, @arguments) = @_;
 
-    if (-e 'MANIFEST') {
-        unlink 'MANIFEST' or die "Can't unlink MANIFEST: $!";
-    }
+	if (-e 'MANIFEST') {
+		unlink 'MANIFEST' or die "Can't unlink MANIFEST: $!";
+	}
 
-    return $self->SUPER::ACTION_manifest(@arguments);
+	return $self->SUPER::ACTION_manifest(@arguments);
 }
 
 sub ACTION_distmeta {
-    my ($self) = @_;
-	
-    $self->depends_on('manifest');
-	
-    return $self->SUPER::ACTION_distmeta();
+	my ($self) = @_;
+
+	$self->depends_on('manifest');
+
+	return $self->SUPER::ACTION_distmeta();
 }
 END_CODE
 );
 
 
 my $builder = $class->new(
-    module_name              => 'Dist::Zilla::BeLike::CSJEWELL',
-    license                  => 'perl',
-    dist_author              => [ 'Curtis Jewell <CSJewell@cpan.org>' ],
-    dist_version_from        => 'lib/Dist/Zilla/BeLike/CSJEWELL.pm',
+	module_name              => 'Dist::Zilla::BeLike::CSJEWELL',
+	license                  => 'perl',
+	dist_author              => [ 'Curtis Jewell <CSJewell@cpan.org>' ],
+	dist_version_from        => 'lib/Dist/Zilla/BeLike/CSJEWELL.pm',
 	create_readme            => 1,
 	create_license           => 1,
 	create_makefile_pl       => 'small',
 	configure_requires       => {
-        'Module::Build'      => '0.33',
+		'Module::Build'      => '0.33',
 	},
-    requires => {
-        'perl'                                => '5.008003',	
-        'Dist::Zilla'                         => '4.102221',
-        'Dist::Zilla::Plugin::Mercurial'      => '0.03',
-        'Dist::Zilla::Plugin::Twitter'        => '0.009',
+	requires => {
+		'perl'                                => '5.008003',	
+		'Dist::Zilla'                         => '4.102221',
+		'Dist::Zilla::Plugin::Mercurial'      => '0.03',
+		'Dist::Zilla::Plugin::Twitter'        => '0.009',
 		'Module::Build'                       => '0.33',
 		'Moose'                               => '1.09',
 		'autodie'                             => '2.10',
@@ -105,24 +105,24 @@ my $builder = $class->new(
 		'Test::HasVersion'                    => '0.012',
 		'Test::Prereq::Build'                 => '1.037',
 		'Test::Portability::Files'            => '0.05',
-    },
+	},
 	build_requires => {
 		'Test::More'                          => '0.88',
 		'Test::UseAllModules'                 => '0.12',
 	},
-    meta_merge     => {
-        resources => {
-            homepage    => 'http://csjewell.comyr.com/perl/',
-            bugtracker  => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dist-Zilla-BeLike-CSJEWELL',
-            repository  => 'http://bitbucket.org/csjewell/dist-zilla-belike-csjewell'
-        },
-    },
+	meta_merge     => {
+		resources => {
+			homepage    => 'http://csjewell.comyr.com/perl/',
+			bugtracker  => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dist-Zilla-BeLike-CSJEWELL',
+			repository  => 'http://bitbucket.org/csjewell/dist-zilla-belike-csjewell'
+		},
+	},
 	share_dir => {
 		module => {
 			'Dist::Zilla::MintingProfile::CSJEWELL'  => 'share',
 		}
 	},
-    add_to_cleanup      => [ 'Dist-Zilla-BeLike-CSJEWELL-*', ],
+	add_to_cleanup      => [ 'Dist-Zilla-BeLike-CSJEWELL-*', ],
 );
 
 $builder->create_build_script();
