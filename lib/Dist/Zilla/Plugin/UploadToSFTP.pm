@@ -1,4 +1,4 @@
-package Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite;
+package Dist::Zilla::Plugin::UploadToSFTP;
 
 use 5.008003;
 use Moose;
@@ -92,16 +92,12 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite - Upload tarball to my own site
-
-=head1 VERSION
-
-This document describes Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite version 0.900.
+Dist::Zilla::Plugin::UploadToSFTP - Upload tarball to my own site
 
 =head1 DESCRIPTION
 
 	; in dzil.ini
-	[CSJEWELL::FTPUploadToOwnSite]
+	[UploadToSFTP]
 	site        = ftp.geocities.invalid
 	directory   = /Heartland/Meadows/3044
 	passive_ftp = 1
