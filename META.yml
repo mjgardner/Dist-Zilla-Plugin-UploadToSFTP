@@ -2,7 +2,6 @@
 abstract: 'Upload tarball to my own site'
 author:
   - 'Mark Gardner <mjgardner@cpan.org>'
-  - 'Curtis Jewell <CSJewell@cpan.org>'
 build_requires:
   Carp: 0
   File::Find: 0

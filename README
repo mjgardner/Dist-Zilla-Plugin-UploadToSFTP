@@ -7,35 +7,35 @@ VERSION
 DESCRIPTION
         ; in dzil.ini
         [UploadToSFTP]
-        site        = ftp.geocities.invalid
+        site        = sftp.geocities.invalid
         directory   = /Heartland/Meadows/3044
-        passive_ftp = 1
         debug       = 0
 
         # in $HOME/.netrc
-        machine ftp.geocities.invalid login csjewell password drowssap
+        machine sftp.geocities.invalid login mjgardner password drowssap
 
   .netrc file
     The .netrc file is described in Net::Netrc and should have an entry in
-    it, matching the site given in the dzil.ini file, and specifying the
+    it matching the site given in the dzil.ini file and specifying the
     username and password.
 
 ATTRIBUTES
   site
-    The FTP site to upload to.
+    The SFTP site to upload to.
 
   directory
-    The directory on the FTP site to upload the tarball to.
+    The directory on the SFTP site to upload the tarball to.
 
   debug
-    Tells ssh to run in verbose mode. Defaults to 0.
+    Tells "ssh" to run in verbose mode. Defaults to 0.
 
 METHODS
   release
     Uploads the tarball to the specified site and directory.
 
 SEE ALSO
-    Dist::Zilla::BeLike::CSJEWELL
+    Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite
+        The original inspiration for this module.
 
 SUPPORT
   Perldoc
@@ -114,13 +114,11 @@ SUPPORT
 
       git clone git://github.com/mjgardner/Dist-Zilla-Plugin-UploadToSFTP.git
 
-AUTHORS
-    *   Mark Gardner <mjgardner@cpan.org>
-
-    *   Curtis Jewell <CSJewell@cpan.org>
+AUTHOR
+    Mark Gardner <mjgardner@cpan.org>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2011 by Curtis Jewell.
+    This software is copyright (c) 2011 by GSI Commerce.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.

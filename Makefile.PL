@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.30;
 
 my %WriteMakefileArgs = (
   'ABSTRACT' => 'Upload tarball to my own site',
-  'AUTHOR' => 'Mark Gardner <mjgardner@cpan.org>, Curtis Jewell <CSJewell@cpan.org>',
+  'AUTHOR' => 'Mark Gardner <mjgardner@cpan.org>',
   'BUILD_REQUIRES' => {
     'Carp' => '0',
     'File::Find' => '0',

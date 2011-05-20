@@ -1,7 +1,7 @@
 #
 # This file is part of Dist-Zilla-Plugin-UploadToSFTP
 #
-# This software is copyright (c) 2011 by Curtis Jewell.
+# This software is copyright (c) 2011 by GSI Commerce.
 #
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
@@ -98,7 +98,7 @@ __END__
 
 =pod
 
-=for :stopwords Mark Gardner Curtis Jewell cpan testmatrix url annocpan anno bugtracker rt
+=for :stopwords Mark Gardner GSI Commerce cpan testmatrix url annocpan anno bugtracker rt
 cpants kwalitee diff irc mailto metadata placeholders
 
 =head1 NAME
@@ -113,33 +113,32 @@ version 0.001
 
     ; in dzil.ini
     [UploadToSFTP]
-    site        = ftp.geocities.invalid
+    site        = sftp.geocities.invalid
     directory   = /Heartland/Meadows/3044
-    passive_ftp = 1
     debug       = 0
 
     # in $HOME/.netrc
-    machine ftp.geocities.invalid login csjewell password drowssap
+    machine sftp.geocities.invalid login mjgardner password drowssap
 
-=head2 .netrc file
+=head2 F<.netrc> file
 
-The .netrc file is described in L<Net::Netrc|Net::Netrc> and should have an
-entry in it, matching the site given in the dzil.ini file, and specifying
+The F<.netrc> file is described in L<Net::Netrc|Net::Netrc> and should have an
+entry in it matching the site given in the F<dzil.ini> file and specifying
 the username and password.
 
 =head1 ATTRIBUTES
 
 =head2 site
 
-The FTP site to upload to.
+The SFTP site to upload to.
 
 =head2 directory
 
-The directory on the FTP site to upload the tarball to.
+The directory on the SFTP site to upload the tarball to.
 
 =head2 debug
 
-Tells ssh to run in verbose mode.  Defaults to 0.
+Tells C<ssh> to run in verbose mode.  Defaults to C<0>.
 
 =head1 METHODS
 
@@ -149,7 +148,13 @@ Uploads the tarball to the specified site and directory.
 
 =head1 SEE ALSO
 
-L<Dist::Zilla::BeLike::CSJEWELL|Dist::Zilla::BeLike::CSJEWELL>
+=over
+
+=item L<Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite|Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite>
+
+The original inspiration for this module.
+
+=back
 
 =head1 SUPPORT
 
@@ -240,23 +245,13 @@ L<https://github.com/mjgardner/Dist-Zilla-Plugin-UploadToSFTP>
 
   git clone git://github.com/mjgardner/Dist-Zilla-Plugin-UploadToSFTP.git
 
-=head1 AUTHORS
-
-=over 4
-
-=item *
+=head1 AUTHOR
 
 Mark Gardner <mjgardner@cpan.org>
 
-=item *
-
-Curtis Jewell <CSJewell@cpan.org>
-
-=back
-
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Curtis Jewell.
+This software is copyright (c) 2011 by GSI Commerce.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

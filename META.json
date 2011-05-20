@@ -1,8 +1,7 @@
 {
    "abstract" : "Upload tarball to my own site",
    "author" : [
-      "Mark Gardner <mjgardner@cpan.org>",
-      "Curtis Jewell <CSJewell@cpan.org>"
+      "Mark Gardner <mjgardner@cpan.org>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Dist::Zilla version 4.200006, CPAN::Meta::Converter version 2.110930",
