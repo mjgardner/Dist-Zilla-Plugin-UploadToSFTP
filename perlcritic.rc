@@ -9,11 +9,11 @@ allowed_pragmata = perlversion strict warnings utf8
 perltidyrc = xt/author/perltidy.rc
 
 [Documentation::PodSpelling]
-stop_words = bugtracker Perldoc perldoc annonations PASSed
+stop_words = bugtracker Perldoc perldoc annonations PASSed netrc dzil ini username
 
 [Documentation::RequirePodSections]
-lib_sections = NAME | VERSION | SYNOPSIS | DESCRIPTION | SUPPORT | AUTHOR | COPYRIGHT AND LICENSE
-script_sections = NAME | USAGE | DESCRIPTION | CONFIGURATION | SUPPORT | AUTHOR | COPYRIGHT AND LICENSE
+lib_sections = NAME | VERSION | SYNOPSIS | DESCRIPTION | SUPPORT | AUTHORS | COPYRIGHT AND LICENSE
+script_sections = NAME | USAGE | DESCRIPTION | CONFIGURATION | SUPPORT | AUTHORS | COPYRIGHT AND LICENSE
 
 [Subroutines::ProhibitCallsToUndeclaredSubs]
-exempt_subs = Moose::around Moose::after Moose::has Readonly::Readonly
+exempt_subs = Moose::has Moose::with MooseX::Has::Sugar::required MooseX::Has::Sugar::ro
