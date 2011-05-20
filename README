@@ -40,8 +40,8 @@ METHODS
     Uploads the tarball to the specified site and directory.
 
 SEE ALSO
-        Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite
-
+    Dist::Zilla
+    Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite
         The original inspiration for this module.
 
 SUPPORT
@@ -129,15 +129,4 @@ COPYRIGHT AND LICENSE
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
-
-POD ERRORS
-    Hey! The above document had some coding errors, which are explained
-    below:
-
-    Around line 157:
-        You can't have =items (as at line 161) unless the first thing after
-        the =over is an =item
-
-    Around line 159:
-        Unknown directive: =tiem
 
