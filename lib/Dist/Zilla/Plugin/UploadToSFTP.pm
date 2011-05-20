@@ -19,63 +19,68 @@ BEGIN {
 
 # ABSTRACT: Upload tarball to my own site
 
+use English '-no_match_vars';
 use Moose;
 use MooseX::Has::Sugar;
 use MooseX::Types::Moose qw(Bool Str);
 use Net::Netrc;
-use Net::FTP;
+use Net::SFTP::Foreign::Exceptional;
+use Try::Tiny;
+use namespace::autoclean;
 with 'Dist::Zilla::Role::Releaser';
 
 has [qw(site directory)] => ( ro, required, isa => Str );
 
-has passive_ftp => ( ro, isa => Bool, default => 1 );
-
 has debug => ( ro, isa => Bool, default => 0 );
 
-sub release {
-    my ( $self, $archive ) = @_;
+has _sftp => ( ro, lazy_build, isa => 'Net::SFTP::Foreign::Exceptional' );
 
-    my $filename = $archive->stringify();
-    my $site     = $self->site();
-    my $siteinfo = Net::Netrc->lookup($site);
-    if ( not $siteinfo ) {
-        $self->log_fatal("Could not get information for $site from .netrc.");
-    }
-    my ( $user, $password, undef ) = $siteinfo->lpa();
+sub _build__sftp {
+    my $self = shift;
 
-    my $ftp = Net::FTP->new(
-        $site,
-        Debug   => $self->debug(),
-        Passive => $self->passive_ftp(),
+    my %sftp_args = (
+        host     => $self->site,
+        user     => $self->login,
+        password => $self->password
     );
+    if ( $self->debug ) { $sfp_args{more} = '-v' }
 
-    $ftp->login( $user, $password )
-        or $self->log_fatal( 'Could not log in to ' . $site );
+    my $sftp;
+    try { $sftp = Net::SFTP::Foreign::Exceptional->new(%sftp_args) }
+    catch { $self->log_fatal($ARG) };
+    return $sftp;
+}
 
-    $ftp->binary;
+has _netrc => ( ro, lazy_build,
+    isa     => 'Net::Netrc',
+    handles => [qw(login password)],
+);
 
-    $ftp->cwd( $self->directory() )
-        or $self->log_fatal(
-        'Could not change remote site directory to' . $self->directory() );
+sub _build__netrc {
+    my $self  = shift;
+    my $site  = $self->site;
+    my $netrc = Net::Netrc->lookup($site)
+        or
+        $self->log_fatal("Could not get information for $site from .netrc.");
+    return $netrc;
+}
 
-    my $remote_file = $ftp->put($filename);
+sub release {
+    my ( $self, $archive ) = @ARG;
+    my $sftp = $self->_sftp;
 
-    if ( $remote_file ne $filename ) {
-        $self->log_fatal( 'Could not upload file: ' . $ftp->message() );
-    }
+    try { $sftp->setcwd( $self->directory ) }
+    catch { $self->log_fatal($ARG) };
 
-    my $remote_size = $ftp->size($remote_file);
-    $remote_size ||= 0;
-    my $local_size = -s $filename;
+    try { $sftp->put( ("$archive") x 2 ) } catch { $self->log_fatal($ARG) };
 
+    my $remote_size = $sftp->ls("$archive")->{a}->size || 0;
+    my $local_size = $archive->stat->size;
     if ( $remote_size != $local_size ) {
         $self->log( "Uploaded file is $remote_size bytes, "
                 . "but local file is $local_size bytes" );
     }
-
-    $ftp->quit;
-
-    $self->log( 'File uploaded to ' . $self->site() );
+    $self->log( "$archive uploaded to " . $self->site );
 
     return 1;
 }
@@ -126,13 +131,9 @@ The FTP site to upload to.
 
 The directory on the FTP site to upload the tarball to.
 
-=head2 passive_ftp
-
-Whether to use passive FTP or not. Defaults to 1.
-
 =head2 debug
 
-Tells Net::FTP to print out its debug messages.  Defaults to 0.
+Tells ssh to run in verbose mode.  Defaults to 0.
 
 =head1 METHODS
 

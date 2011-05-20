@@ -23,11 +23,14 @@
       "runtime" : {
          "requires" : {
             "Dist::Zilla::Role::Releaser" : 0,
+            "English" : 0,
             "Moose" : 0,
             "MooseX::Has::Sugar" : 0,
             "MooseX::Types::Moose" : 0,
-            "Net::FTP" : 0,
             "Net::Netrc" : 0,
+            "Net::SFTP::Foreign::Exceptional" : 0,
+            "Try::Tiny" : 0,
+            "namespace::autoclean" : 0,
             "perl" : "5.008",
             "utf8" : 0
          }
@@ -35,7 +38,6 @@
       "test" : {
          "requires" : {
             "Carp" : 0,
-            "English" : 0,
             "File::Find" : 0,
             "File::Temp" : 0,
             "Scalar::Util" : 0,

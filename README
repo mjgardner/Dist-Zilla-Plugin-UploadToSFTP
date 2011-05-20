@@ -27,11 +27,8 @@ ATTRIBUTES
   directory
     The directory on the FTP site to upload the tarball to.
 
-  passive_ftp
-    Whether to use passive FTP or not. Defaults to 1.
-
   debug
-    Tells Net::FTP to print out its debug messages. Defaults to 0.
+    Tells ssh to run in verbose mode. Defaults to 0.
 
 METHODS
   release
