@@ -127,7 +127,7 @@ the username and password.
 
 =over
 
-=tiem L<Dist::Zilla|Dist::Zilla>
+=item L<Dist::Zilla|Dist::Zilla>
 
 =item L<Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite|Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite>
 
