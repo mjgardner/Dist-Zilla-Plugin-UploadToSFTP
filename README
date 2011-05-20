@@ -14,7 +14,7 @@ DESCRIPTION
         # in $HOME/.netrc
         machine sftp.geocities.invalid login mjgardner password drowssap
 
-    This is a Dist::Zilla releaser plugin that uploads a distribution
+    This is a Dist::Zilla::Role::Releaser plugin that uploads a distribution
     tarball to an SFTP site. It can be used in addition to
     Dist::Zilla::Plugin::UploadToCPAN or in its place. In fact I wrote it
     for the latter case so that I could release proprietary distributions
