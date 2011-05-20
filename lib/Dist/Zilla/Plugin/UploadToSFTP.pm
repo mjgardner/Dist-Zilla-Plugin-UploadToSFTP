@@ -44,7 +44,7 @@ sub _build__sftp
         user     => $self->login,
         password => $self->password,
     );
-    if ( $self->debug ) { $sfp_args{more} = '-v' }
+    if ( $self->debug ) { $sftp_args{more} = '-v' }
 
     my $sftp;
     try { $sftp = Net::SFTP::Foreign::Exceptional->new(%sftp_args) }
