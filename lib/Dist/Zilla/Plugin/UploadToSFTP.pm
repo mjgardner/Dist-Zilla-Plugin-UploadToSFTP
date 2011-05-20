@@ -35,7 +35,8 @@ has debug => ( ro, isa => Bool, default => 0 );
 
 has _sftp => ( ro, lazy_build, isa => 'Net::SFTP::Foreign::Exceptional' );
 
-sub _build__sftp {
+sub _build__sftp
+{    ## no critic (Subroutines::ProhibitUnusedPrivateSubroutines)
     my $self = shift;
 
     my %sftp_args = (
@@ -56,7 +57,8 @@ has _netrc => ( ro, lazy_build,
     handles => [qw(login password)],
 );
 
-sub _build__netrc {
+sub _build__netrc
+{    ## no critic (Subroutines::ProhibitUnusedPrivateSubroutines)
     my $self  = shift;
     my $site  = $self->site;
     my $netrc = Net::Netrc->lookup($site)
@@ -74,7 +76,9 @@ sub release {
 
     try { $sftp->put( ("$archive") x 2 ) } catch { $self->log_fatal($ARG) };
 
-    my $remote_size = $sftp->ls("$archive")->{a}->size || 0;
+    my $remote_size = $sftp->ls("$archive")->{a}
+        ->size    ## no critic (ProhibitAccessOfPrivateData)
+        || 0;
     my $local_size = $archive->stat->size;
     if ( $remote_size != $local_size ) {
         $self->log( "Uploaded file is $remote_size bytes, "
@@ -82,7 +86,7 @@ sub release {
     }
     $self->log( "$archive uploaded to " . $self->site );
 
-    return 1;
+    return;
 }
 
 __PACKAGE__->meta->make_immutable();
