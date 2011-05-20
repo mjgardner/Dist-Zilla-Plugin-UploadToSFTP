@@ -120,6 +120,12 @@ version 0.001
     # in $HOME/.netrc
     machine sftp.geocities.invalid login mjgardner password drowssap
 
+This is a L<Dist::Zilla|Dist::Zilla> releaser plugin that uploads a distribution
+tarball to an SFTP site.  It can be used in addition to
+L<Dist::Zilla::Plugin::UploadToCPAN|Dist::Zilla::Plugin::UploadToCPAN>
+or in its place. In fact I wrote it for the latter case so that I could release
+proprietary distributions inhouse.
+
 =head2 F<.netrc> file
 
 The F<.netrc> file is described in L<Net::Netrc|Net::Netrc> and should have an
@@ -149,6 +155,8 @@ Uploads the tarball to the specified site and directory.
 =head1 SEE ALSO
 
 =over
+
+=tiem L<Dist::Zilla|Dist::Zilla>
 
 =item L<Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite|Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite>
 

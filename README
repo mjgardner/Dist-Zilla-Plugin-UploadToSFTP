@@ -14,6 +14,12 @@ DESCRIPTION
         # in $HOME/.netrc
         machine sftp.geocities.invalid login mjgardner password drowssap
 
+    This is a Dist::Zilla releaser plugin that uploads a distribution
+    tarball to an SFTP site. It can be used in addition to
+    Dist::Zilla::Plugin::UploadToCPAN or in its place. In fact I wrote it
+    for the latter case so that I could release proprietary distributions
+    inhouse.
+
   .netrc file
     The .netrc file is described in Net::Netrc and should have an entry in
     it matching the site given in the dzil.ini file and specifying the
@@ -34,7 +40,8 @@ METHODS
     Uploads the tarball to the specified site and directory.
 
 SEE ALSO
-    Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite
+        Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite
+
         The original inspiration for this module.
 
 SUPPORT
@@ -122,4 +129,15 @@ COPYRIGHT AND LICENSE
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
+
+POD ERRORS
+    Hey! The above document had some coding errors, which are explained
+    below:
+
+    Around line 157:
+        You can't have =items (as at line 161) unless the first thing after
+        the =over is an =item
+
+    Around line 159:
+        Unknown directive: =tiem
 
