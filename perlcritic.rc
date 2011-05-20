@@ -9,7 +9,7 @@ allowed_pragmata = perlversion strict warnings utf8
 perltidyrc = xt/author/perltidy.rc
 
 [Documentation::PodSpelling]
-stop_words = bugtracker Perldoc perldoc annonations PASSed netrc dzil ini username SFTP
+stop_words = bugtracker Perldoc perldoc annonations PASSed netrc dzil ini username SFTP plugin inhouse
 
 [Documentation::RequirePodSections]
 lib_sections = NAME | VERSION | DESCRIPTION | SUPPORT | AUTHOR | COPYRIGHT AND LICENSE
