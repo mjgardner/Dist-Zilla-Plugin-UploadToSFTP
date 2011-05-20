@@ -28,7 +28,6 @@
             "MooseX::Types::Moose" : 0,
             "Net::FTP" : 0,
             "Net::Netrc" : 0,
-            "perl" : "5.008",
             "utf8" : 0
          }
       },
@@ -39,7 +38,8 @@
             "File::Find" : 0,
             "File::Temp" : 0,
             "Scalar::Util" : 0,
-            "Test::More" : "0.94"
+            "Test::More" : "0.94",
+            "perl" : "5.004"
          }
       }
    },

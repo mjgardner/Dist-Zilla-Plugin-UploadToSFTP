@@ -10,6 +10,7 @@ build_requires:
   File::Temp: 0
   Scalar::Util: 0
   Test::More: 0.94
+  perl: 5.004
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
@@ -26,7 +27,6 @@ requires:
   MooseX::Types::Moose: 0
   Net::FTP: 0
   Net::Netrc: 0
-  perl: 5.008
   utf8: 0
 resources:
   bugtracker: https://github.com/mjgardner/Dist-Zilla-Plugin-UploadToSFTP/issues
