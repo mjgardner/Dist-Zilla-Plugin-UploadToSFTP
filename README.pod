@@ -58,7 +58,7 @@ Uploads the tarball to the specified site and directory.
 
 =over
 
-=tiem L<Dist::Zilla|Dist::Zilla>
+=item L<Dist::Zilla|Dist::Zilla>
 
 =item L<Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite|Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite>
 
