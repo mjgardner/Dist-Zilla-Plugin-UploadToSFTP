@@ -110,6 +110,13 @@ __PACKAGE__->meta->make_immutable();
     # in $HOME/.netrc
     machine sftp.geocities.invalid login mjgardner password drowssap
 
+
+This is a L<Dist::Zilla::Role::Releaser|Dist::Zilla::Role::Releaser> plugin that
+uploads a distribution tarball to an SFTP site.  It can be used in addition to
+L<Dist::Zilla::Plugin::UploadToCPAN|Dist::Zilla::Plugin::UploadToCPAN>
+or in its place. In fact I wrote it for the latter case so that I could release
+proprietary distributions inhouse.
+
 =head2 F<.netrc> file
 
 The F<.netrc> file is described in L<Net::Netrc|Net::Netrc> and should have an
@@ -119,6 +126,8 @@ the username and password.
 =head1 SEE ALSO
 
 =over
+
+=tiem L<Dist::Zilla|Dist::Zilla>
 
 =item L<Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite|Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite>
 
