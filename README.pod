@@ -39,13 +39,9 @@ The FTP site to upload to.
 
 The directory on the FTP site to upload the tarball to.
 
-=head2 passive_ftp
-
-Whether to use passive FTP or not. Defaults to 1.
-
 =head2 debug
 
-Tells Net::FTP to print out its debug messages.  Defaults to 0.
+Tells ssh to run in verbose mode.  Defaults to 0.
 
 =head1 METHODS
 
