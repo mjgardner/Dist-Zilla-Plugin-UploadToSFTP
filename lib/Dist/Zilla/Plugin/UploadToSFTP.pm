@@ -14,11 +14,11 @@ with 'Dist::Zilla::Role::Releaser';
 
 =attr site
 
-The FTP site to upload to.
+The SFTP site to upload to.
 
 =attr directory
 
-The directory on the FTP site to upload the tarball to.
+The directory on the SFTP site to upload the tarball to.
 
 =cut
 
@@ -26,7 +26,7 @@ has [qw(site directory)] => ( ro, required, isa => Str );
 
 =attr debug
 
-Tells ssh to run in verbose mode.  Defaults to 0.
+Tells C<ssh> to run in verbose mode.  Defaults to C<0>.
 
 =cut
 
@@ -103,20 +103,25 @@ __PACKAGE__->meta->make_immutable();
 
     ; in dzil.ini
     [UploadToSFTP]
-    site        = ftp.geocities.invalid
+    site        = sftp.geocities.invalid
     directory   = /Heartland/Meadows/3044
-    passive_ftp = 1
     debug       = 0
 
     # in $HOME/.netrc
-    machine ftp.geocities.invalid login csjewell password drowssap
+    machine sftp.geocities.invalid login mjgardner password drowssap
 
-=head2 .netrc file
+=head2 F<.netrc> file
 
-The .netrc file is described in L<Net::Netrc|Net::Netrc> and should have an
-entry in it, matching the site given in the dzil.ini file, and specifying
+The F<.netrc> file is described in L<Net::Netrc|Net::Netrc> and should have an
+entry in it matching the site given in the F<dzil.ini> file and specifying
 the username and password.
 
 =head1 SEE ALSO
 
-L<Dist::Zilla::BeLike::CSJEWELL|Dist::Zilla::BeLike::CSJEWELL>
+=over
+
+=item L<Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite|Dist::Zilla::Plugin::CSJEWELL::FTPUploadToOwnSite>
+
+The original inspiration for this module.
+
+=back
