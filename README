@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::Plugin::UploadToSFTP - Upload tarball to my own site
 
 VERSION
-    version 0.001
+    version 0.002
 
 DESCRIPTION
         ; in dzil.ini

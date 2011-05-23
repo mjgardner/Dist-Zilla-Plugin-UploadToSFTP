@@ -49,12 +49,13 @@
       "bugtracker" : {
          "web" : "https://github.com/mjgardner/Dist-Zilla-Plugin-UploadToSFTP/issues"
       },
+      "homepage" : "http://search.cpan.org/dist/Dist-Zilla-Plugin-UploadToSFTP/",
       "repository" : {
          "type" : "git",
          "url" : "git://github.com/mjgardner/Dist-Zilla-Plugin-UploadToSFTP.git",
          "web" : "https://github.com/mjgardner/Dist-Zilla-Plugin-UploadToSFTP"
       }
    },
-   "version" : "0.001"
+   "version" : "0.002"
 }
 

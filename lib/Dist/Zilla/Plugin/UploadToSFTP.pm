@@ -14,7 +14,7 @@ use utf8;
 package Dist::Zilla::Plugin::UploadToSFTP;
 
 BEGIN {
-    $Dist::Zilla::Plugin::UploadToSFTP::VERSION = '0.001';
+    $Dist::Zilla::Plugin::UploadToSFTP::VERSION = '0.002';
 }
 
 # ABSTRACT: Upload tarball to my own site
@@ -107,7 +107,7 @@ Dist::Zilla::Plugin::UploadToSFTP - Upload tarball to my own site
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 DESCRIPTION
 
