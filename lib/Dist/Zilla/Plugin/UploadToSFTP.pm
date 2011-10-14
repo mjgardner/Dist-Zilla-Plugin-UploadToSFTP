@@ -85,7 +85,7 @@ sub release {
     my $remote_size;
     {
         ## no critic (ValuesAndExpressions::ProhibitAccessOfPrivateData)
-        $remote_size = $sftp->ls("$archive")->{a}->size || 0;
+        $remote_size = $sftp->stat("$archive")->size || 0;
     }
     my $local_size = $archive->stat->size;
     if ( $remote_size != $local_size ) {
