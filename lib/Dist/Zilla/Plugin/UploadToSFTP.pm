@@ -7,7 +7,7 @@ use Moose;
 use MooseX::Has::Sugar;
 use MooseX::Types::Moose qw(Bool Str);
 use Net::Netrc;
-use Net::SFTP::Foreign::Exceptional;
+use Net::SFTP::Foreign;
 use Try::Tiny;
 use namespace::autoclean;
 with 'Dist::Zilla::Role::Releaser';
@@ -32,7 +32,7 @@ Tells C<ssh> to run in verbose mode.  Defaults to C<0>.
 
 has debug => ( ro, isa => Bool, default => 0 );
 
-has _sftp => ( ro, lazy_build, isa => 'Net::SFTP::Foreign::Exceptional' );
+has _sftp => ( ro, lazy_build, isa => 'Net::SFTP::Foreign' );
 
 sub _build__sftp
 {    ## no critic (Subroutines::ProhibitUnusedPrivateSubroutines)
@@ -42,11 +42,12 @@ sub _build__sftp
         host     => $self->site,
         user     => $self->login,
         password => $self->password,
+        autodie => 1,
     );
     if ( $self->debug ) { $sftp_args{more} = '-v' }
 
     my $sftp;
-    try { $sftp = Net::SFTP::Foreign::Exceptional->new(%sftp_args) }
+    try { $sftp = Net::SFTP::Foreign->new(%sftp_args) }
     catch { $self->log_fatal($ARG) };
     return $sftp;
 }
