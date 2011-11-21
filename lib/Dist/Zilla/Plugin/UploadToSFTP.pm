@@ -6,18 +6,14 @@
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
 #
+package Dist::Zilla::Plugin::UploadToSFTP;
+
 use 5.008;
 use strict;
 use warnings;
 use utf8;
 
-package Dist::Zilla::Plugin::UploadToSFTP;
-{
-    $Dist::Zilla::Plugin::UploadToSFTP::VERSION = '0.002';
-}
-
-# ABSTRACT: Upload tarball to my own site
-
+our $VERSION = '0.002';    # VERSION
 use English '-no_match_vars';
 use Moose;
 use MooseX::Has::Sugar;
@@ -34,8 +30,7 @@ has debug => ( ro, isa => Bool, default => 0 );
 
 has _sftp => ( ro, lazy_build, isa => 'Net::SFTP::Foreign' );
 
-sub _build__sftp
-{    ## no critic (Subroutines::ProhibitUnusedPrivateSubroutines)
+sub _build__sftp {    ## no critic (ProhibitUnusedPrivateSubroutines)
     my $self = shift;
 
     my %sftp_args = (
@@ -57,8 +52,7 @@ has _netrc => ( ro, lazy_build,
     handles => [qw(login password)],
 );
 
-sub _build__netrc
-{    ## no critic (Subroutines::ProhibitUnusedPrivateSubroutines)
+sub _build__netrc {    ## no critic (ProhibitUnusedPrivateSubroutines)
     my $self  = shift;
     my $site  = $self->site;
     my $netrc = Net::Netrc->lookup($site)
@@ -89,6 +83,8 @@ sub release {
 
 __PACKAGE__->meta->make_immutable();
 1;
+
+# ABSTRACT: Upload tarball to my own site
 
 __END__
 

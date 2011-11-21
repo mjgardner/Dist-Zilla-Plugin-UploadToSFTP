@@ -7,10 +7,6 @@
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
 #
-use 5.008;
-use strict;
-use warnings;
-use utf8;
 
 BEGIN {
     unless ( $ENV{AUTHOR_TESTING} ) {
