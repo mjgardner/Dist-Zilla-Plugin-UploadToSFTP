@@ -82,11 +82,7 @@ sub release {
 
     try { $sftp->put( ("$archive") x 2 ) } catch { $self->log_fatal($ARG) };
 
-    my $remote_size;
-    {
-        ## no critic (ValuesAndExpressions::ProhibitAccessOfPrivateData)
-        $remote_size = $sftp->stat("$archive")->size || 0;
-    }
+    my $remote_size = $sftp->stat("$archive")->size || 0;
     my $local_size = $archive->stat->size;
     if ( $remote_size != $local_size ) {
         $self->log( "Uploaded file is $remote_size bytes, "

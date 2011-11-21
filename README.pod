@@ -9,7 +9,7 @@ Dist::Zilla::Plugin::UploadToSFTP - Upload tarball to my own site
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 DESCRIPTION
 
