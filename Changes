@@ -1,6 +1,6 @@
 Revision history for Dist-Zilla-Plugin-UploadToSFTP
 
-0.002     2011-11-21 13:25:50 America/New_York
+0.002     2011-11-21 14:26:25 America/New_York
   - use Net::SFTP::Foreign directly (Torsten Schoenfeld++)
   - fix size comparison test (Torsten Schoenfeld++)
   - code cleanup, making things easier for contributors

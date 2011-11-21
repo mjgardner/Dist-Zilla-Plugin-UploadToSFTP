@@ -17,6 +17,10 @@ t/release-dist-manifest.t
 t/release-distmeta.t
 t/release-eol.t
 t/release-kwalitee.t
+t/release-localbrew-pristine-perl-5.10.1.t
+t/release-localbrew-pristine-perl-5.12.4.t
+t/release-localbrew-pristine-perl-5.14.2.t
+t/release-localbrew-pristine-perl-5.8.9.t
 t/release-meta-json.t
 t/release-minimum-version.t
 t/release-mojibake.t
