@@ -1,4 +1,8 @@
-{{$NEXT}}
+Revision history for Dist-Zilla-Plugin-UploadToSFTP
 
+{{$NEXT}}
+  - use Net::SFTP::Foreign directly (Torsten Schoenfeld++)
+  - fix size comparison test (Torsten Schoenfeld++)
+  - code cleanup, making things easier for contributors
 0.001     2011-05-20 17:12:16 America/New_York
-    forked from Dist-Zilla-BeLike-CSJEWELL-0.901
+  - forked from Dist-Zilla-BeLike-CSJEWELL-0.901
