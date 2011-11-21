@@ -1,7 +1,11 @@
 package Dist::Zilla::Plugin::UploadToSFTP;
 
-# ABSTRACT: Upload tarball to my own site
+use 5.008;
+use strict;
+use warnings;
+use utf8;
 
+# VERSION
 use English '-no_match_vars';
 use Moose;
 use MooseX::Has::Sugar;
@@ -12,37 +16,20 @@ use Try::Tiny;
 use namespace::autoclean;
 with 'Dist::Zilla::Role::Releaser';
 
-=attr site
-
-The SFTP site to upload to.
-
-=attr directory
-
-The directory on the SFTP site to upload the tarball to.
-
-=cut
-
 has [qw(site directory)] => ( ro, required, isa => Str );
-
-=attr debug
-
-Tells C<ssh> to run in verbose mode.  Defaults to C<0>.
-
-=cut
 
 has debug => ( ro, isa => Bool, default => 0 );
 
 has _sftp => ( ro, lazy_build, isa => 'Net::SFTP::Foreign' );
 
-sub _build__sftp
-{    ## no critic (Subroutines::ProhibitUnusedPrivateSubroutines)
+sub _build__sftp {    ## no critic (ProhibitUnusedPrivateSubroutines)
     my $self = shift;
 
     my %sftp_args = (
         host     => $self->site,
         user     => $self->login,
         password => $self->password,
-        autodie => 1,
+        autodie  => 1,
     );
     if ( $self->debug ) { $sftp_args{more} = '-v' }
 
@@ -57,8 +44,7 @@ has _netrc => ( ro, lazy_build,
     handles => [qw(login password)],
 );
 
-sub _build__netrc
-{    ## no critic (Subroutines::ProhibitUnusedPrivateSubroutines)
+sub _build__netrc {    ## no critic (ProhibitUnusedPrivateSubroutines)
     my $self  = shift;
     my $site  = $self->site;
     my $netrc = Net::Netrc->lookup($site)
@@ -66,12 +52,6 @@ sub _build__netrc
         $self->log_fatal("Could not get information for $site from .netrc.");
     return $netrc;
 }
-
-=method release
-
-Uploads the tarball to the specified site and directory.
-
-=cut
 
 sub release {
     my ( $self, $archive ) = @ARG;
@@ -96,6 +76,8 @@ sub release {
 __PACKAGE__->meta->make_immutable();
 1;
 
+# ABSTRACT: Upload tarball to my own site
+
 =head1 DESCRIPTION
 
     ; in dzil.ini
@@ -119,6 +101,22 @@ proprietary distributions inhouse.
 The F<.netrc> file is described in L<Net::Netrc|Net::Netrc> and should have an
 entry in it matching the site given in the F<dzil.ini> file and specifying
 the username and password.
+
+=attr site
+
+The SFTP site to upload to.
+
+=attr directory
+
+The directory on the SFTP site to upload the tarball to.
+
+=attr debug
+
+Tells C<ssh> to run in verbose mode.  Defaults to C<0>.
+
+=method release
+
+Uploads the tarball to the specified site and directory.
 
 =head1 SEE ALSO
 
